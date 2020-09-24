@@ -28,6 +28,8 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 24px;
+  float:left;
+  overflow-y: scroll;
 }
 
 .chat-content-write {
