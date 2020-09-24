@@ -1,5 +1,6 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
+import { UserAddOutlined } from '@ant-design/icons';
 
 import './FriendsList.css';
 import FriendsListItem from './FriendsListItem';
@@ -41,6 +42,7 @@ export default function FriendsList(props: any) {
     }}
     >
       <h2 className="friends-list-title">Friends List</h2>
+      <Button type="primary" shape="circle" icon={<UserAddOutlined />} style={{marginLeft: '8px'}}/>
       <Menu theme="dark" mode="inline">
           {
               friendsList.map((friendItem) => 
