@@ -13,3 +13,9 @@
   background: #ccc;
   margin: 0px !important;
 }
+
+.friends-item-add-button {
+  margin-left: 8px;
+  margin-bottom: 12px;
+  align-self: flex-end;
+}
