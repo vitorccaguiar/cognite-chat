@@ -21,9 +21,8 @@ export default function ChatMenu() {
         <FriendsList selectFriend={onSelectFriend}/>
         <Layout className="site-layout" style={{ marginLeft: 200 }}>
           <Header className="site-layout-background" style={{ padding: 0 }} />
-          {console.log(selectedFriend)}
           <ChatContent friend={selectedFriend}/>
-          <Footer style={{ textAlign: 'center' }}>Cognite Chat ©2020 Created by Vitor Aguiar</Footer>
+          <Footer style={{ textAlign: 'center'}}>Cognite Chat ©2020 Created by Vitor Aguiar</Footer>
         </Layout>
       </Layout>
     </div>

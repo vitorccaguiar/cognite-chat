@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button, Divider } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 
 import './FriendsList.css';
@@ -8,6 +8,7 @@ import FriendsListItem from './FriendsListItem';
 const { Sider } = Layout;
 
 export interface IFriendsData {
+  id: number;
   name: string;
   status: string;
 }
@@ -15,14 +16,17 @@ export interface IFriendsData {
 export default function FriendsList(props: any) {
   const friendsList: IFriendsData[] = [
     {
+        id: 1,
         name: 'Vitor',
         status: 'Online',
     },
     {
+        id: 2,
         name: 'Paulo',
         status: 'Online',
     },
     {
+        id: 3,
         name: 'Charles',
         status: 'Offline',
     }
@@ -41,14 +45,17 @@ export default function FriendsList(props: any) {
         left: 0,
     }}
     >
-      <h2 className="friends-list-title">Friends List</h2>
-      <Button type="primary" shape="circle" icon={<UserAddOutlined />} style={{marginLeft: '8px'}}/>
+      <div className="friends-list-sider-container">
+        <h2 className="friends-list-title">Friends List</h2>
+        <Button type="primary" shape="circle" icon={<UserAddOutlined />} style={{marginLeft: '8px', marginBottom: '12px', alignSelf: 'flex-end'}}/>
+      </div>
       <Menu theme="dark" mode="inline">
           {
               friendsList.map((friendItem) => 
                 <FriendsListItem key={friendItem.name} friend={friendItem} selectFriend={onSelectFriend}
               />)
           }
+          <Divider />
       </Menu>
     </Sider>
   )

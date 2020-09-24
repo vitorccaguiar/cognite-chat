@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Avatar } from 'antd';
+import { Menu, Avatar, Divider } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import './FriendsListItem.css';
@@ -13,7 +13,7 @@ export default function FriendsListItem(props: any) {
   }
   return (
     <div>
-        <hr/>
+        <Divider className="friends-item-divider"/>
         <Menu.Item className="friends-item" {...other} onClick={onSelectFriend}>
           <div className="friends-item-container">
             <Avatar icon={<UserOutlined />}/>
@@ -21,7 +21,6 @@ export default function FriendsListItem(props: any) {
             <span style={statusStyle}>{props.friend.status}</span>
           </div>
         </Menu.Item>
-        <hr/>
     </div>
   )
 }

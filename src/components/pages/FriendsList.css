@@ -3,3 +3,10 @@
   color: #1890ff;
   border-right: 1px;
 }
+
+.friends-list-sider-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+}
