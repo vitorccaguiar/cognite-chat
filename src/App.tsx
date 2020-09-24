@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import './App.css';
 import ChatMenu from './components/pages/ChatMenu';
 import Login from './components/pages/Login';
+
+import './App.css';
 
 function App() {
   return (

@@ -1,0 +1,10 @@
+.friends-item {
+  margin: 0px 8px 0px 8px;
+  font-weight: 500;
+}
+
+.friends-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
