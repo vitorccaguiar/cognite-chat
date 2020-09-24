@@ -1,0 +1,35 @@
+.chat-content-container {
+  height: 800px;
+  background: #fff;
+  margin: 16px;
+}
+
+.chat-content-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-content-header {
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 16px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.chat-content-window {
+  height: 650px;
+  flex-shrink: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.chat-content-write {
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+}

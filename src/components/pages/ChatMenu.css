@@ -4,10 +4,6 @@
   margin: 16px;
 }
 
-.content-container {
-  background: #fff;
-}
-
 [data-theme="dark"] .site-layout .site-layout-background {
     background: #141414;
 }

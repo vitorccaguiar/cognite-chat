@@ -11,7 +11,7 @@ export interface IFriendsData {
   status: string;
 }
 
-export default function FriendsList() {
+export default function FriendsList(props: any) {
   const friendsList: IFriendsData[] = [
     {
         name: 'Vitor',
@@ -27,6 +27,10 @@ export default function FriendsList() {
     }
   ]
 
+  const onSelectFriend = (friend: IFriendsData) => {
+    props.selectFriend(friend);
+  }
+
   return (
     <Sider
     style={{
@@ -39,7 +43,9 @@ export default function FriendsList() {
       <h2 className="friends-list-title">Friends List</h2>
       <Menu theme="dark" mode="inline">
           {
-              friendsList.map((friendItem) => <FriendsListItem key={friendItem.name} friend={friendItem} />)
+              friendsList.map((friendItem) => 
+                <FriendsListItem key={friendItem.name} friend={friendItem} selectFriend={onSelectFriend}
+              />)
           }
       </Menu>
     </Sider>

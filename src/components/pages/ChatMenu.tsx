@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
 
-import FriendsList from './FriendsList';
+import FriendsList, { IFriendsData } from './FriendsList';
 
 import './ChatMenu.css';
+import ChatContent from './ChatContent';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Footer } = Layout;
 
 export default function ChatMenu() {
+  const [selectedFriend, setSelectedFriend] = useState({});
+
+  const onSelectFriend = (friend: IFriendsData) => {
+    setSelectedFriend(friend);
+  }
+
   return (
     <div>
       <Layout>
-        <FriendsList />
+        <FriendsList selectFriend={onSelectFriend}/>
         <Layout className="site-layout" style={{ marginLeft: 200 }}>
           <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-            <div className="content-container" style={{ padding: 24 }}>
-              Content
-            </div>
-          </Content>
+          <ChatContent friend={selectedFriend}/>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
         </Layout>
       </Layout>
