@@ -6,18 +6,26 @@ import './ChatContent.css';
 const { TextArea } = Input;
 const { Content } = Layout;
 
+export interface IMessage {
+  id?: number;
+  value: string;
+}
+
 export interface ILocalStorageMessage {
   friendId: number;
-  messages: string[];
+  messages: IMessage[];
 }
+
+let idCounter: number = 1;
 
 export default function ChatContent(props: any) {
   const { friend } = props;
-  const [messages, setMessages] = useState([] as string[]);
-  const [message, setMessage] = useState('' as string);
+  const [messages, setMessages] = useState([] as IMessage[]);
+  const [message, setMessage] = useState({} as IMessage);
 
 
   const addMessage = () => {
+    message.id = idCounter++;
     const mergedMessages = [message, ...messages];
     const messagesWithFriend: ILocalStorageMessage = {
       friendId: friend.id,
@@ -40,7 +48,7 @@ export default function ChatContent(props: any) {
       localStorage.setItem('messages', JSON.stringify([messagesWithFriend]));
     }
     setMessages(mergedMessages);
-    setMessage('' as string);
+    setMessage({} as IMessage);
   }
 
   useEffect(() => {
@@ -83,11 +91,11 @@ export default function ChatContent(props: any) {
               }
             </div>
             <div className="chat-content-window">
-            { messages.map((message) => <div className="chat-content-message"> {message} </div> )}
+            { messages.map((message) => <div key={message.id} className="chat-content-message"> {message.value} </div> )}
             </div>
             <div className="chat-content-write">
-              <TextArea rows={4} autoSize={{maxRows: 3, minRows: 3}} value={message}
-                onChange={e => setMessage( e.target.value)}
+              <TextArea rows={4} autoSize={{maxRows: 3, minRows: 3}} value={message.value}
+                onChange={e => setMessage( { value: e.target.value })}
                 onKeyDown={onEnterPress}/>
               <Button type="primary" style={{marginLeft: '8px'}} onClick={addMessage}>
                 Submit

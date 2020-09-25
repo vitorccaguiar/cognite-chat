@@ -71,7 +71,7 @@ export default function FriendsList(props: any) {
         <Menu theme="dark" mode="inline">
           {
             friendsList?.map((friendItem: IFriendsData) =>
-              <FriendsListItem key={friendItem.name} friend={friendItem} selectFriend={onSelectFriend}/>)
+              <FriendsListItem key={friendItem.id} friend={friendItem} selectFriend={onSelectFriend}/>)
           }
         </Menu>
         <Divider />
