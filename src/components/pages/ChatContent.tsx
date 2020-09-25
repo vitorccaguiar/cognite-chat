@@ -59,6 +59,12 @@ export default function ChatContent(props: any) {
     setMessages(getMessages());
   }, [friend])
 
+  const onEnterPress = (e: any) => {
+    if (e.keyCode === 13) {
+      addMessage();
+    }
+  }
+
   const statusStyle = friend.status === 'Online' ? { color: 'green' } : { color: 'red' };
 
   return (
@@ -80,7 +86,9 @@ export default function ChatContent(props: any) {
             { messages.map((message) => <div className="chat-content-message"> {message} </div> )}
             </div>
             <div className="chat-content-write">
-              <TextArea rows={4} autoSize={{maxRows: 3, minRows: 3}} value={message} onChange={e => setMessage( e.target.value)}/>
+              <TextArea rows={4} autoSize={{maxRows: 3, minRows: 3}} value={message}
+                onChange={e => setMessage( e.target.value)}
+                onKeyDown={onEnterPress}/>
               <Button type="primary" style={{marginLeft: '8px'}} onClick={addMessage}>
                 Submit
               </Button>
