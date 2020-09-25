@@ -61,7 +61,7 @@ export default function FriendsList(props: any) {
           overflow: 'auto',
           height: '100vh',
           position: 'fixed',
-          left: 0,
+          left: 0
         }}
       >
         <div className="friends-list-sider-container">

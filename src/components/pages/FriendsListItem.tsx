@@ -17,7 +17,7 @@ export default function FriendsListItem(props: any) {
         <Menu.Item className="friends-item" {...other} onClick={onSelectFriend}>
           <div className="friends-item-container">
             <Avatar icon={<UserOutlined />}/>
-            <span>{props.friend.name}</span>
+            <span>{props.friend.name.length > 8 ? `${props.friend.name.slice(0, 9)}...` : props.friend.name}</span>
             <span style={statusStyle}>{props.friend.status}</span>
           </div>
         </Menu.Item>
