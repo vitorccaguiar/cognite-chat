@@ -13,14 +13,20 @@ export interface IFriendsData {
   status: string;
 }
 
-let idCounter: number = 1;
-
 export default function FriendsList(props: any) {
   let friends = localStorage.getItem('friends');
   const parsedFriends = friends ? JSON.parse(friends) as IFriendsData[] : null;
   const [visible, setVisible] = useState(false);
   const [newFriendName, setNewFriendName] = useState('');
   const [friendsList, setFriendsList] = useState(parsedFriends);
+  let idCounter: number;
+  const result = localStorage.getItem('friends-id');
+  if (result) {
+    idCounter = parseInt(result, 10);
+  } else {
+    idCounter = 1;
+    localStorage.setItem('friends-id', '1');
+  }
 
   const showModal = () => {
     setVisible(true);
@@ -44,6 +50,10 @@ export default function FriendsList(props: any) {
       setFriendsList([friend]);
     }
     setNewFriendName('');
+    const friendsId: string | null = localStorage.getItem('friends-id');
+    if (friendsId) {
+      localStorage.setItem('friends-id', (parseInt(friendsId) + 1).toString());
+    }
   };
 
   const handleCancel = () => {

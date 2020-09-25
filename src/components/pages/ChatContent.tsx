@@ -16,12 +16,18 @@ export interface ILocalStorageMessage {
   messages: IMessage[];
 }
 
-let idCounter: number = 1;
-
 export default function ChatContent(props: any) {
   const { friend } = props;
   const [messages, setMessages] = useState([] as IMessage[]);
   const [message, setMessage] = useState({} as IMessage);
+  let idCounter: number;
+  const result = localStorage.getItem('message-id');
+  if (result) {
+    idCounter = parseInt(result, 10);
+  } else {
+    idCounter = 1;
+    localStorage.setItem('message-id', '1');
+  }
 
 
   const addMessage = () => {
@@ -49,6 +55,10 @@ export default function ChatContent(props: any) {
     }
     setMessages(mergedMessages);
     setMessage({} as IMessage);
+    const messageId: string | null = localStorage.getItem('message-id');
+    if (messageId) {
+      localStorage.setItem('message-id', (parseInt(messageId) + 1).toString());
+    }
   }
 
   useEffect(() => {
